@@ -1,6 +1,6 @@
 # React App mono repo Boilerplate
 
-A simple boilerplate for creating web app´s using Vite, React Js, Javascript, Redux Toolkit and TailwindCss in the Front and Flask, SqlAlchemy and Python in the Back.
+A simple boilerplate for creating web app´s using Vite, React Js, Javascript, Redux Toolkit and TailwindCss in the Front and Flask, SqlAlchemy, Python and Planet Scale in the Back.
 
 ## Authors
 
@@ -30,12 +30,25 @@ Install _FRONTEND_ with npm
   npm run dev
 ```
 
+Copy .ENV (Do it in both Front and in Back folders)
+
+```bash
+cp .env.example .env
+```
+
 Install _BACKEND_ with npm
 
 ```bash
   cd back
   pipenv install
+  pipenv shell
   pipenv run start
+```
+
+Create migrations folder
+
+```bash
+ pipenv run init
 ```
 
 ## Changes in Models

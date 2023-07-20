@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-import MySQLdb
+
 from api.admin import setup_admin
 from api.commands import setup_commands
 from api.models import db
@@ -12,22 +12,6 @@ from flask import Flask, jsonify, request, send_from_directory, url_for
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_swagger import swagger
-from dotenv import load_dotenv
-
-# load_dotenv()
-
-
-# connection = MySQLdb.connect(
-#     host=os.getenv("HOST"),
-#     user=os.getenv("USERNAME"),
-#     passwd=os.getenv("PASSWORD"),
-#     db=os.getenv("DATABASE"),
-#     autocommit=True,
-#     ssl_mode="VERIFY_IDENTITY",
-#     ssl={
-#         "ca": "cacert.pem"
-#     }
-# )
 
 ENV = os.getenv("FLASK_DEBUG")
 static_file_dir = os.path.join(os.path.dirname(
@@ -36,19 +20,16 @@ static_file_dir = os.path.join(os.path.dirname(
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-# database configuration
-
-
+# database condiguration
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url 
 else:
-    raise ValueError("DATABASE_URL is not set in .env file")
-
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
-# "sqlite:///:memory:"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
