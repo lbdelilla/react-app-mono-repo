@@ -20,6 +20,10 @@ A simple boilerplate for creating web app´s using Vite, React Js, Javascript, R
 
 - [Flask & SqlAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/)
 
+- [Python](https://www.python.org/doc/)
+
+- [Planet Scale](https://app.planetscale.com/)
+
 ## Installation
 
 Install _FRONTEND_ with npm
